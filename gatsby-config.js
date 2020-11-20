@@ -2,9 +2,9 @@ require("dotenv").config();
 
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Sanity Developer Portfolio Starter`,
-    description: `Get your development portfolio off the ground with this deployment-ready Gatsby + Sanity CMS Starter.`,
-    author: `@jacobneterer`,
+    title: `Pareto Library`,
+    description: `Your home for curated resources to help you rapdily accelerate your learning process to become a full-stack developer and top-ranked neuro-athlete.`,
+    author: `@mikhael28`,
   },
   plugins: [
     `gatsby-plugin-typescript`,
