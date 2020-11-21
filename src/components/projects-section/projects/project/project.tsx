@@ -1,4 +1,4 @@
-import { Link } from "gatsby";
+import { Link, graphql, useStaticQuery } from "gatsby";
 import Img from "gatsby-image";
 import React, { FunctionComponent } from "react";
 import { IProjectProps } from "../../../../contracts/projects/project/iproject-props";
