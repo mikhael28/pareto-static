@@ -1,23 +1,23 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "pareto-library",
   "private": false,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Home to curated resources that create top-ranked neuro-athletes and software developers.",
   "version": "1.0.0",
-  "author": "Jacob Neterer <jacobrneterer@gmail.com",
+  "author": "Michael 'Misha' Litchev <mikhael@hey.com",
   "dependencies": {
     "@sanity/block-content-to-react": "^2.0.7",
     "@sanity/client": "^0.141.6",
-    "gatsby": "^2.20.8",
+    "gatsby": "^2.27.0",
     "gatsby-image": "^2.2.44",
     "gatsby-plugin-manifest": "^2.3.3",
     "gatsby-plugin-offline": "^3.1.2",
     "gatsby-plugin-postcss": "^2.2.0",
     "gatsby-plugin-react-helmet": "^3.1.24",
     "gatsby-plugin-sass": "^2.2.0",
-    "gatsby-plugin-sharp": "^2.4.13",
+    "gatsby-plugin-sharp": "^2.9.0",
     "gatsby-plugin-typescript": "^2.3.0",
     "gatsby-source-filesystem": "^2.1.56",
-    "gatsby-source-sanity": "^5.0.6",
+    "gatsby-source-sanity": "^6.0.4",
     "gatsby-transformer-sharp": "^2.4.3",
     "node-sass": "^4.13.1",
     "prop-types": "^15.7.2",
@@ -51,9 +51,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jneterer/gatsby-developer-portfolio"
+    "url": "https://github.com/mikhael28/pareto-next"
   },
   "bugs": {
-    "url": "https://github.com/jneterer/gatsby-developer-portfolio/issues"
+    "url": "https://pareto.education"
   }
 }
