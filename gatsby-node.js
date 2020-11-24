@@ -342,43 +342,30 @@ const createProjectPages = async (graphql, actions, reporter) => {
   });
 };
 
-const createKnowledgePages = async (graphql, actions, reporter) => {
+const createKnowledgePages = async (
+  graphql,
+  actions,
+  reporter,
+  query,
+  pathName
+) => {
+  console.log("query: ", query);
   const { createPage } = actions;
-  const getKnowledgeResults = await graphql(`
-    query MyQuery {
-      allSanityPaymentsSchema {
-        edges {
-          node {
-            id
-            title
-            type
-            url
-            _rawOverview
-            slug {
-              _key
-              _type
-              current
-            }
-          }
-        }
-      }
-    }
-  `);
+  const getKnowledgeResults = await graphql(query);
   if (getKnowledgeResults.errors) {
     throw getKnowledgeResults.errors;
   }
 
-  const learnings =
-    getKnowledgeResults.data.allSanityPaymentsSchema.edges || [];
+  const learnings = getKnowledgeResults.data.allSanityWebSchema.edges || [];
 
   console.log("Learnings: ", learnings);
 
   learnings.forEach((node) => {
     console.log("Node?:", node);
-    const path = `/developer/web/${node.node.slug.current}`;
+    const path = `/developer/${pathName}/${node.node.slug.current}`;
     createPage({
       path,
-      component: require.resolve("./src/templates/project/project.tsx"),
+      component: require.resolve("./src/templates/resource/resource.tsx"),
       context: {
         id: node.node.slug.current,
       },
@@ -389,5 +376,5 @@ const createKnowledgePages = async (graphql, actions, reporter) => {
 // You can delete this file if you're not using it
 exports.createPages = async ({ graphql, actions, reporter }) => {
   await createProjectPages(graphql, actions, reporter);
-  await createKnowledgePages(graphql, actions, reporter);
+  await createKnowledgePages(graphql, actions, reporter, reactPages, reactPath);
 };
