@@ -342,14 +342,13 @@ const createProjectPages = async (graphql, actions, reporter) => {
   });
 };
 
-const createKnowledgePages = async (
+const createReactPages = async (
   graphql,
   actions,
   reporter,
   query,
   pathName
 ) => {
-  console.log("query: ", query);
   const { createPage } = actions;
   const getKnowledgeResults = await graphql(query);
   if (getKnowledgeResults.errors) {
@@ -361,7 +360,6 @@ const createKnowledgePages = async (
   console.log("Learnings: ", learnings);
 
   learnings.forEach((node) => {
-    console.log("Node?:", node);
     const path = `/developer/${pathName}/${node.node.slug.current}`;
     createPage({
       path,
@@ -373,8 +371,308 @@ const createKnowledgePages = async (
   });
 };
 
+const createNodePages = async (graphql, actions, reporter, query, pathName) => {
+  const { createPage } = actions;
+  const getKnowledgeResults = await graphql(query);
+  if (getKnowledgeResults.errors) {
+    throw getKnowledgeResults.errors;
+  }
+
+  const learnings = getKnowledgeResults.data.allSanityBackEndSchema.edges || [];
+
+  learnings.forEach((node) => {
+    const path = `/developer/${pathName}/${node.node.slug.current}`;
+    createPage({
+      path,
+      component: require.resolve("./src/templates/resource/resource.tsx"),
+      context: {
+        id: node.node.slug.current,
+      },
+    });
+  });
+};
+
+const createAlgorithmsPages = async (
+  graphql,
+  actions,
+  reporter,
+  query,
+  pathName
+) => {
+  const { createPage } = actions;
+  const getKnowledgeResults = await graphql(query);
+  if (getKnowledgeResults.errors) {
+    throw getKnowledgeResults.errors;
+  }
+
+  const learnings =
+    getKnowledgeResults.data.allSanityAlgorithmsSchema.edges || [];
+
+  learnings.forEach((node) => {
+    console.log(node.node.slug);
+    const path = `/developer/${pathName}/${node.node.slug.current}`;
+    createPage({
+      path,
+      component: require.resolve("./src/templates/resource/resource.tsx"),
+      context: {
+        id: node.node.slug.current,
+      },
+    });
+  });
+};
+
+const createServerlessPages = async (
+  graphql,
+  actions,
+  reporter,
+  query,
+  pathName
+) => {
+  const { createPage } = actions;
+  const getKnowledgeResults = await graphql(query);
+  if (getKnowledgeResults.errors) {
+    throw getKnowledgeResults.errors;
+  }
+
+  const learnings =
+    getKnowledgeResults.data.allSanityServerlessSchema.edges || [];
+
+  learnings.forEach((node) => {
+    console.log(node.node.slug);
+
+    const path = `/developer/${pathName}/${node.node.slug.current}`;
+    createPage({
+      path,
+      component: require.resolve("./src/templates/resource/resource.tsx"),
+      context: {
+        id: node.node.slug.current,
+      },
+    });
+  });
+};
+
+const createPaymentsPages = async (
+  graphql,
+  actions,
+  reporter,
+  query,
+  pathName
+) => {
+  const { createPage } = actions;
+  const getKnowledgeResults = await graphql(query);
+  if (getKnowledgeResults.errors) {
+    throw getKnowledgeResults.errors;
+  }
+
+  const learnings =
+    getKnowledgeResults.data.allSanityPaymentsSchema.edges || [];
+
+  learnings.forEach((node) => {
+    console.log(node.node.slug);
+
+    const path = `/developer/${pathName}/${node.node.slug.current}`;
+    createPage({
+      path,
+      component: require.resolve("./src/templates/resource/resource.tsx"),
+      context: {
+        id: node.node.slug.current,
+      },
+    });
+  });
+};
+
+const createTestingPages = async (
+  graphql,
+  actions,
+  reporter,
+  query,
+  pathName
+) => {
+  const { createPage } = actions;
+  const getKnowledgeResults = await graphql(query);
+  if (getKnowledgeResults.errors) {
+    throw getKnowledgeResults.errors;
+  }
+
+  const learnings = getKnowledgeResults.data.allSanityTestingSchema.edges || [];
+
+  learnings.forEach((node) => {
+    console.log(node.node.slug);
+
+    const path = `/developer/${pathName}/${node.node.slug.current}`;
+    createPage({
+      path,
+      component: require.resolve("./src/templates/resource/resource.tsx"),
+      context: {
+        id: node.node.slug.current,
+      },
+    });
+  });
+};
+
+const createUxPages = async (graphql, actions, reporter, query, pathName) => {
+  const { createPage } = actions;
+  const getKnowledgeResults = await graphql(query);
+  if (getKnowledgeResults.errors) {
+    throw getKnowledgeResults.errors;
+  }
+
+  const learnings = getKnowledgeResults.data.allSanityUxSchema.edges || [];
+
+  learnings.forEach((node) => {
+    console.log(node.node.slug);
+
+    const path = `/developer/${pathName}/${node.node.slug.current}`;
+    createPage({
+      path,
+      component: require.resolve("./src/templates/resource/resource.tsx"),
+      context: {
+        id: node.node.slug.current,
+      },
+    });
+  });
+};
+const createJsPages = async (graphql, actions, reporter, query, pathName) => {
+  const { createPage } = actions;
+  const getKnowledgeResults = await graphql(query);
+  if (getKnowledgeResults.errors) {
+    throw getKnowledgeResults.errors;
+  }
+
+  const learnings =
+    getKnowledgeResults.data.allSanityJavascriptSchema.edges || [];
+
+  learnings.forEach((node) => {
+    console.log(node.node.slug);
+
+    const path = `/developer/${pathName}/${node.node.slug.current}`;
+    createPage({
+      path,
+      component: require.resolve("./src/templates/resource/resource.tsx"),
+      context: {
+        id: node.node.slug.current,
+      },
+    });
+  });
+};
+
+const createGitPages = async (graphql, actions, reporter, query, pathName) => {
+  const { createPage } = actions;
+  const getKnowledgeResults = await graphql(query);
+  if (getKnowledgeResults.errors) {
+    throw getKnowledgeResults.errors;
+  }
+
+  const learnings = getKnowledgeResults.data.allSanityGitSchema.edges || [];
+
+  learnings.forEach((node) => {
+    console.log(node.node.slug);
+
+    const path = `/developer/${pathName}/${node.node.slug.current}`;
+    createPage({
+      path,
+      component: require.resolve("./src/templates/resource/resource.tsx"),
+      context: {
+        id: node.node.slug.current,
+      },
+    });
+  });
+};
+
+const createAwsPages = async (graphql, actions, reporter, query, pathName) => {
+  const { createPage } = actions;
+  const getKnowledgeResults = await graphql(query);
+  if (getKnowledgeResults.errors) {
+    throw getKnowledgeResults.errors;
+  }
+
+  const learnings = getKnowledgeResults.data.allSanityAwsSchema.edges || [];
+
+  learnings.forEach((node) => {
+    console.log(node.node.slug);
+
+    const path = `/developer/${pathName}/${node.node.slug.current}`;
+    createPage({
+      path,
+      component: require.resolve("./src/templates/resource/resource.tsx"),
+      context: {
+        id: node.node.slug.current,
+      },
+    });
+  });
+};
+
+const createSecurityPages = async (
+  graphql,
+  actions,
+  reporter,
+  query,
+  pathName
+) => {
+  const { createPage } = actions;
+  const getKnowledgeResults = await graphql(query);
+  if (getKnowledgeResults.errors) {
+    throw getKnowledgeResults.errors;
+  }
+
+  const learnings =
+    getKnowledgeResults.data.allSanitySecuritySchema.edges || [];
+
+  learnings.forEach((node) => {
+    console.log(node.node.slug);
+
+    const path = `/developer/${pathName}/${node.node.slug.current}`;
+    createPage({
+      path,
+      component: require.resolve("./src/templates/resource/resource.tsx"),
+      context: {
+        id: node.node.slug.current,
+      },
+    });
+  });
+};
 // You can delete this file if you're not using it
 exports.createPages = async ({ graphql, actions, reporter }) => {
   await createProjectPages(graphql, actions, reporter);
-  await createKnowledgePages(graphql, actions, reporter, reactPages, reactPath);
+  await createReactPages(graphql, actions, reporter, reactPages, reactPath);
+  await createNodePages(graphql, actions, reporter, backendPages, backEndPath);
+  await createAlgorithmsPages(
+    graphql,
+    actions,
+    reporter,
+    algorithmsPages,
+    algorithmsPath
+  );
+  await createServerlessPages(
+    graphql,
+    actions,
+    reporter,
+    serverlessPages,
+    serverlessPath
+  );
+  await createPaymentsPages(
+    graphql,
+    actions,
+    reporter,
+    paymentsPages,
+    paymentsPath
+  );
+  await createTestingPages(
+    graphql,
+    actions,
+    reporter,
+    testingPages,
+    testingPath
+  );
+  await createUxPages(graphql, actions, reporter, uxPages, uxPath);
+  await createJsPages(graphql, actions, reporter, jsPages, jsPath);
+  await createGitPages(graphql, actions, reporter, gitPages, gitPath);
+  await createAwsPages(graphql, actions, reporter, awsPages, awsPath);
+  await createSecurityPages(
+    graphql,
+    actions,
+    reporter,
+    securityPages,
+    securityPath
+  );
 };
