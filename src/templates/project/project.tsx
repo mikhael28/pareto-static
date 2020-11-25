@@ -10,7 +10,10 @@ import SEO from "../../components/seo";
 import { IProject } from "../../contracts/projects/project/iproject";
 import { ITag } from "../../contracts/tags/tag/itag";
 import sanity from "../../sanity";
+import imageUrlBuilder from "@sanity/image-url";
 import "./project.scss";
+
+const builder = imageUrlBuilder(sanity);
 
 const Project: FunctionComponent<{ data: { sanityProject: IProject } }> = ({
   data,
@@ -37,13 +40,17 @@ const Project: FunctionComponent<{ data: { sanityProject: IProject } }> = ({
         description={data.sanityProject.description}
       />
       <div className="project-container">
-        <Img
-          className="project-image"
-          fixed={data.sanityProject.mainImage.asset.fixed}
-        />
         <div className="project-content-container">
           <div className="project-heading-container">
-            <h1 className="project-title">{data.sanityProject.title}</h1>
+            <div style={{ display: "flex" }}>
+              <Img
+                className="project-image"
+                fixed={data.sanityProject.mainImage.asset.fixed}
+                style={{ marginTop: 24 }}
+              />
+              &nbsp;&nbsp;
+              <h1>{data.sanityProject.title}</h1>
+            </div>
             {(data.sanityProject.githubUrl || data.sanityProject.siteUrl) && (
               <div className="icons-container">
                 {data.sanityProject.githubUrl && (
@@ -65,14 +72,14 @@ const Project: FunctionComponent<{ data: { sanityProject: IProject } }> = ({
             <p className="label-text">Description</p>
             <p className="content-text">{data.sanityProject.description}</p>
           </div>
-          <div className="label-content-container">
+          {/* <div className="label-content-container">
             <p className="label-text">Tags</p>
             <div className="content-text">
               {data.sanityProject.tags.map((tag: ITag) => (
                 <Tag key={tag._id} tag={tag} toggleTagState={null} />
               ))}
             </div>
-          </div>
+          </div> */}
           <div className="label-content-container">
             <p className="label-text">About</p>
             <div className="content-text">
@@ -82,41 +89,25 @@ const Project: FunctionComponent<{ data: { sanityProject: IProject } }> = ({
         </div>
         <div className="cards">
           {resources.map((resource, index) => {
-            function toPlainText(blocks = []) {
-              return (
-                blocks
-                  // loop through each block
-                  .map((block) => {
-                    // if it's not a text block with children,
-                    // return nothing
-                    if (block._type !== "block" || !block.children) {
-                      return "";
-                    }
-                    // loop through the children spans, and join the
-                    // text strings
-                    return block.children.map((child) => child.text).join("");
-                  })
-                  // join the paragraphs leaving split by two linebreaks
-                  .join("\n\n")
-              );
+            function urlFor(source) {
+              return builder.image(source);
             }
 
-            let blockText = toPlainText(resource.overview);
-            console.log(blockText);
             return (
-              <div className="card">
-                <h1>{resource.title}</h1>
-                {/* <BlockContent blocks={resource.overview} /> */}
-                <p>{blockText.slice(0, 140)}...</p>
-                <div style={{ marginTop: "auto" }}>
-                  <Link
-                    className="project-card"
-                    to={`/developer/${path}/${resource.slug.current}`}
-                  >
+              <Link to={`/developer/${path}/${resource.slug.current}`}>
+                <div className="card">
+                  <img
+                    src={urlFor(resource.logo)
+                      .height(300)
+                      .url()}
+                  />
+                  <h2>{resource.title}</h2>
+                  <p>{resource.summary}</p>
+                  <div style={{ marginTop: "auto" }}>
                     Click here to view resource.
-                  </Link>
+                  </div>
                 </div>
-              </div>
+              </Link>
             );
           })}
         </div>

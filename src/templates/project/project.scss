@@ -96,16 +96,17 @@
 
 .cards {
   display: flex;
-  justify-content: space-evenly;
   flex-wrap: wrap;
-  flex-grow: 1;
+  justify-content: space-around;
+  // flex-grow: 1;
+  // align-items: stretch;
 }
 
 .card {
   /* styling below, flex above */
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  // flex-grow: 0;
   padding: 10px;
   margin: 6px;
   border: none;
@@ -114,5 +115,6 @@
   background: white;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px 0px;
   width: 280px;
-  min-height: 250px;
+  // This is a hack - need to figure out proper stretching of item height.
+  min-height: 500px;
 }
