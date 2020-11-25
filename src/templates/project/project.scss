@@ -86,9 +86,33 @@
       }
     }
   }
-  .project-image, .project-content-container {
+  .project-image,
+  .project-content-container {
     @screen xl {
       @apply mx-32;
     }
   }
+}
+
+.cards {
+  display: flex;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
+  flex-grow: 1;
+}
+
+.card {
+  /* styling below, flex above */
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  padding: 10px;
+  margin: 6px;
+  border: none;
+  border-radius: 3px;
+  border-color: rgb(17, 16, 16);
+  background: white;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 1px 4px 0px;
+  width: 280px;
+  min-height: 250px;
 }

@@ -9,7 +9,7 @@ import "./project.scss";
 const Project: FunctionComponent<IProjectProps> = ({ project }) => {
   return (
     <Link className="project-card" to={"/developer/" + project.slug.current}>
-      <Img className="project-image" fluid={project.mainImage.asset.fluid} />
+      <Img className="project-image" fixed={project.mainImage.asset.fixed} />
       <div className="project-content-container">
         <div className="project-text-container">
           <div className="project-name">{project.title}</div>

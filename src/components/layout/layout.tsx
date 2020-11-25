@@ -45,7 +45,7 @@ const Layout = ({ children }) => {
             <IconEmail />
           </a>
           <h2>
-            Built by{" "}
+            Built with love in Seattle{" "}
             <a href="https://fullstackmichael.com" target="_blank">
               Michael 'Misha' Litchev
             </a>

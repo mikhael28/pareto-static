@@ -37,10 +37,10 @@ const Project: FunctionComponent<{ data: { sanityProject: IProject } }> = ({
         description={data.sanityProject.description}
       />
       <div className="project-container">
-        {/* <Img
+        <Img
           className="project-image"
-          fluid={data.sanityProject.mainImage.asset.fluid}
-        /> */}
+          fixed={data.sanityProject.mainImage.asset.fixed}
+        />
         <div className="project-content-container">
           <div className="project-heading-container">
             <h1 className="project-title">{data.sanityProject.title}</h1>
@@ -80,20 +80,46 @@ const Project: FunctionComponent<{ data: { sanityProject: IProject } }> = ({
             </div>
           </div>
         </div>
-        {resources.map((resource, index) => {
-          return (
-            <div>
-              <h1>{resource.title}</h1>
-              <BlockContent blocks={resource.overview} />
-              <Link
-                className="project-card"
-                to={`/developer/${path}/${resource.slug.current}`}
-              >
-                Click here to view resource.
-              </Link>
-            </div>
-          );
-        })}
+        <div className="cards">
+          {resources.map((resource, index) => {
+            function toPlainText(blocks = []) {
+              return (
+                blocks
+                  // loop through each block
+                  .map((block) => {
+                    // if it's not a text block with children,
+                    // return nothing
+                    if (block._type !== "block" || !block.children) {
+                      return "";
+                    }
+                    // loop through the children spans, and join the
+                    // text strings
+                    return block.children.map((child) => child.text).join("");
+                  })
+                  // join the paragraphs leaving split by two linebreaks
+                  .join("\n\n")
+              );
+            }
+
+            let blockText = toPlainText(resource.overview);
+            console.log(blockText);
+            return (
+              <div className="card">
+                <h1>{resource.title}</h1>
+                {/* <BlockContent blocks={resource.overview} /> */}
+                <p>{blockText.slice(0, 140)}...</p>
+                <div style={{ marginTop: "auto" }}>
+                  <Link
+                    className="project-card"
+                    to={`/developer/${path}/${resource.slug.current}`}
+                  >
+                    Click here to view resource.
+                  </Link>
+                </div>
+              </div>
+            );
+          })}
+        </div>
       </div>
     </Layout>
   );
@@ -119,8 +145,8 @@ export const pageQuery = graphql`
       }
       mainImage {
         asset {
-          fluid(maxWidth: 1200) {
-            ...GatsbySanityImageFluid
+          fixed(width: 30, height: 30) {
+            ...GatsbySanityImageFixed
           }
         }
       }

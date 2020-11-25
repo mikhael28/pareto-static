@@ -19,8 +19,8 @@ export const GetAllProjects = () => {
             }
             mainImage {
               asset {
-                fluid(maxWidth: 1200) {
-                  ...GatsbySanityImageFluid
+                fixed(width: 280, height: 250) {
+                  ...GatsbySanityImageFixed
                 }
               }
             }
@@ -28,6 +28,6 @@ export const GetAllProjects = () => {
         }
       }
     `
-  )
+  );
   return projects;
-}
+};
