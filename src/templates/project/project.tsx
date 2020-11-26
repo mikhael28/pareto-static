@@ -46,10 +46,10 @@ const Project: FunctionComponent<{ data: { sanityProject: IProject } }> = ({
               <Img
                 className="project-image"
                 fixed={data.sanityProject.mainImage.asset.fixed}
-                style={{ marginTop: 24 }}
+                style={{ marginTop: 18 }}
               />
               &nbsp;&nbsp;
-              <h1>{data.sanityProject.title}</h1>
+              <h1 style={{ fontSize: 48 }}>{data.sanityProject.title}</h1>
             </div>
             {(data.sanityProject.githubUrl || data.sanityProject.siteUrl) && (
               <div className="icons-container">
@@ -136,7 +136,7 @@ export const pageQuery = graphql`
       }
       mainImage {
         asset {
-          fixed(width: 30, height: 30) {
+          fixed(width: 80, height: 80) {
             ...GatsbySanityImageFixed
           }
         }

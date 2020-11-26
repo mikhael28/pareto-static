@@ -136,7 +136,7 @@ const ProjectsSection = () => {
   }, [selectedTags, viewAllSelected]);
   return (
     <div id="projects" className="projects-section-container">
-      <h2>Pareto Developer Toolkit</h2>
+      <h2>Developer Context Builder</h2>
       <Tags
         tags={tags}
         toggleTagState={(event: MouseEvent, tag: ITag) =>

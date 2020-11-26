@@ -1,6 +1,7 @@
 .project-container {
   @apply py-12;
   @apply px-3;
+  padding-top: 0rem;
   @screen md {
     @apply px-5;
   }
