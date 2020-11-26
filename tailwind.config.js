@@ -28,9 +28,9 @@ module.exports = {
       sm: "640px",
       md: "768px",
       lg: "1024px",
-      // made the pixel count here outrageous, because I don't want to trigger the xl and 2xl styles - it messes things up, though it does create a few problems as well.
-      xl: "5280px",
-      "2xl": "5367px",
+      // made the pixel count here outrageous, because I don't want to trigger the xl and 2xl styles - it messes things up, though it does create a few problems as
+      xl: "1280px",
+      "2xl": "1367px",
     },
   },
   variants: {},

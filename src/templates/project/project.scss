@@ -2,13 +2,13 @@
   @apply py-12;
   @apply px-3;
   @screen md {
-    @apply px-5;
+    // @apply px-5;
   }
   @screen lg {
-    @apply px-20;
+    // @apply px-20;
   }
   @screen 2xl {
-    @apply px-64;
+    // @apply px-64;
   }
   .project-image {
     @apply rounded-lg;
@@ -89,7 +89,7 @@
   .project-image,
   .project-content-container {
     @screen xl {
-      @apply mx-32;
+      // @apply mx-32;
     }
   }
 }

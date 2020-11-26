@@ -451,36 +451,6 @@ const createServerlessPages = async (
   });
 };
 
-const createPaymentsPages = async (
-  graphql,
-  actions,
-  reporter,
-  query,
-  pathName
-) => {
-  const { createPage } = actions;
-  const getKnowledgeResults = await graphql(query);
-  if (getKnowledgeResults.errors) {
-    throw getKnowledgeResults.errors;
-  }
-
-  const learnings =
-    getKnowledgeResults.data.allSanityPaymentsSchema.edges || [];
-
-  learnings.forEach((node) => {
-    console.log(node.node.slug);
-
-    const path = `/developer/${pathName}/${node.node.slug.current}`;
-    createPage({
-      path,
-      component: require.resolve("./src/templates/resource/resource.tsx"),
-      context: {
-        id: node.node.slug.current,
-      },
-    });
-  });
-};
-
 const createTestingPages = async (
   graphql,
   actions,
@@ -649,13 +619,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     reporter,
     serverlessPages,
     serverlessPath
-  );
-  await createPaymentsPages(
-    graphql,
-    actions,
-    reporter,
-    paymentsPages,
-    paymentsPath
   );
   await createTestingPages(
     graphql,

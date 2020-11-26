@@ -1,6 +1,7 @@
 .projects-container {
   @apply flex;
   @apply flex-wrap;
+  @apply text-center;
   .no-results {
     @apply text-center;
     @apply text-xl;

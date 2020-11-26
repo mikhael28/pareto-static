@@ -41,12 +41,12 @@
   }
   @screen lg {
     // RESPONSIVE OVERRIDE START
-    @apply px-20;
+    // @apply px-20;
     // RESPONSIVE OVERRIDE END
   }
   @screen xl {
     // RESPONSIVE OVERRIDE START
-    @apply px-64;
+    // @apply px-64;
     // RESPONSIVE OVERRIDE END
   }
   .left-menu-container {
@@ -88,7 +88,7 @@
         @apply transition-all;
         @apply duration-150;
         svg {
-          fill: theme('colors.white');
+          fill: theme("colors.white");
         }
       }
       @screen md {
