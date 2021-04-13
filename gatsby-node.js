@@ -331,6 +331,7 @@ const createProjectPages = async (graphql, actions, reporter) => {
     // let capitalizedCurrent =
     //   node.slug.current.charAt(0).toUpperCase() + node.slug.current.slice(1);
     // console.log("capitalized: ", capitalizedCurrent);
+    if (node.slug) {
     const path = `/developer/${node.slug.current}`;
     createPage({
       path,
@@ -339,6 +340,7 @@ const createProjectPages = async (graphql, actions, reporter) => {
         id: node.id,
       },
     });
+  }
   });
 };
 
@@ -359,16 +361,20 @@ const createReactPages = async (
 
   console.log("Learnings: ", learnings);
 
+  
   learnings.forEach((node) => {
-    const path = `/developer/${pathName}/${node.node.slug.current}`;
-    createPage({
-      path,
-      component: require.resolve("./src/templates/resource/resource.tsx"),
-      context: {
-        id: node.node.slug.current,
-      },
+      if (node.node.slug) {
+      const path = `/developer/${pathName}/${node.node.slug.current}`;
+      createPage({
+        path,
+        component: require.resolve("./src/templates/resource/resource.tsx"),
+        context: {
+          id: node.node.slug.current,
+        },
+      });
+    }
     });
-  });
+
 };
 
 const createNodePages = async (graphql, actions, reporter, query, pathName) => {
@@ -381,14 +387,18 @@ const createNodePages = async (graphql, actions, reporter, query, pathName) => {
   const learnings = getKnowledgeResults.data.allSanityBackEndSchema.edges || [];
 
   learnings.forEach((node) => {
-    const path = `/developer/${pathName}/${node.node.slug.current}`;
-    createPage({
-      path,
-      component: require.resolve("./src/templates/resource/resource.tsx"),
-      context: {
-        id: node.node.slug.current,
-      },
-    });
+
+    if (node.node.slug) {
+
+      const path = `/developer/${pathName}/${node.node.slug.current}`;
+      createPage({
+        path,
+        component: require.resolve("./src/templates/resource/resource.tsx"),
+        context: {
+          id: node.node.slug.current,
+        },
+      });
+    }
   });
 };
 
@@ -410,14 +420,18 @@ const createAlgorithmsPages = async (
 
   learnings.forEach((node) => {
     console.log(node.node.slug);
-    const path = `/developer/${pathName}/${node.node.slug.current}`;
-    createPage({
-      path,
-      component: require.resolve("./src/templates/resource/resource.tsx"),
-      context: {
-        id: node.node.slug.current,
-      },
-    });
+
+    if (node.node.slug) {
+
+      const path = `/developer/${pathName}/${node.node.slug.current}`;
+      createPage({
+        path,
+        component: require.resolve("./src/templates/resource/resource.tsx"),
+        context: {
+          id: node.node.slug.current,
+        },
+      });
+    }
   });
 };
 
@@ -440,14 +454,18 @@ const createServerlessPages = async (
   learnings.forEach((node) => {
     console.log(node.node.slug);
 
-    const path = `/developer/${pathName}/${node.node.slug.current}`;
-    createPage({
-      path,
-      component: require.resolve("./src/templates/resource/resource.tsx"),
-      context: {
-        id: node.node.slug.current,
-      },
-    });
+    if (node.node.slug) {
+
+      const path = `/developer/${pathName}/${node.node.slug.current}`;
+      createPage({
+        path,
+        component: require.resolve("./src/templates/resource/resource.tsx"),
+        context: {
+          id: node.node.slug.current,
+        },
+      });
+    }
+
   });
 };
 
@@ -469,14 +487,18 @@ const createTestingPages = async (
   learnings.forEach((node) => {
     console.log(node.node.slug);
 
-    const path = `/developer/${pathName}/${node.node.slug.current}`;
-    createPage({
-      path,
-      component: require.resolve("./src/templates/resource/resource.tsx"),
-      context: {
-        id: node.node.slug.current,
-      },
-    });
+    if (node.node.slug) {
+
+      const path = `/developer/${pathName}/${node.node.slug.current}`;
+      createPage({
+        path,
+        component: require.resolve("./src/templates/resource/resource.tsx"),
+        context: {
+          id: node.node.slug.current,
+        },
+      });
+    }
+
   });
 };
 
@@ -492,14 +514,18 @@ const createUxPages = async (graphql, actions, reporter, query, pathName) => {
   learnings.forEach((node) => {
     console.log(node.node.slug);
 
-    const path = `/developer/${pathName}/${node.node.slug.current}`;
-    createPage({
-      path,
-      component: require.resolve("./src/templates/resource/resource.tsx"),
-      context: {
-        id: node.node.slug.current,
-      },
-    });
+    if (node.node.slug) {
+
+      const path = `/developer/${pathName}/${node.node.slug.current}`;
+      createPage({
+        path,
+        component: require.resolve("./src/templates/resource/resource.tsx"),
+        context: {
+          id: node.node.slug.current,
+        },
+      });
+    }
+
   });
 };
 const createJsPages = async (graphql, actions, reporter, query, pathName) => {
@@ -515,14 +541,18 @@ const createJsPages = async (graphql, actions, reporter, query, pathName) => {
   learnings.forEach((node) => {
     console.log(node.node.slug);
 
-    const path = `/developer/${pathName}/${node.node.slug.current}`;
-    createPage({
-      path,
-      component: require.resolve("./src/templates/resource/resource.tsx"),
-      context: {
-        id: node.node.slug.current,
-      },
-    });
+    if (node.node.slug) {
+
+      const path = `/developer/${pathName}/${node.node.slug.current}`;
+      createPage({
+        path,
+        component: require.resolve("./src/templates/resource/resource.tsx"),
+        context: {
+          id: node.node.slug.current,
+        },
+      });
+    }
+
   });
 };
 
@@ -538,14 +568,18 @@ const createGitPages = async (graphql, actions, reporter, query, pathName) => {
   learnings.forEach((node) => {
     console.log(node.node.slug);
 
-    const path = `/developer/${pathName}/${node.node.slug.current}`;
-    createPage({
-      path,
-      component: require.resolve("./src/templates/resource/resource.tsx"),
-      context: {
-        id: node.node.slug.current,
-      },
-    });
+    if (node.node.slug) {
+
+      const path = `/developer/${pathName}/${node.node.slug.current}`;
+      createPage({
+        path,
+        component: require.resolve("./src/templates/resource/resource.tsx"),
+        context: {
+          id: node.node.slug.current,
+        },
+      });
+    }
+
   });
 };
 
@@ -561,14 +595,18 @@ const createAwsPages = async (graphql, actions, reporter, query, pathName) => {
   learnings.forEach((node) => {
     console.log(node.node.slug);
 
-    const path = `/developer/${pathName}/${node.node.slug.current}`;
-    createPage({
-      path,
-      component: require.resolve("./src/templates/resource/resource.tsx"),
-      context: {
-        id: node.node.slug.current,
-      },
-    });
+    if (node.node.slug) {
+
+      const path = `/developer/${pathName}/${node.node.slug.current}`;
+      createPage({
+        path,
+        component: require.resolve("./src/templates/resource/resource.tsx"),
+        context: {
+          id: node.node.slug.current,
+        },
+      });
+    }
+
   });
 };
 
@@ -591,14 +629,18 @@ const createSecurityPages = async (
   learnings.forEach((node) => {
     console.log(node.node.slug);
 
-    const path = `/developer/${pathName}/${node.node.slug.current}`;
-    createPage({
-      path,
-      component: require.resolve("./src/templates/resource/resource.tsx"),
-      context: {
-        id: node.node.slug.current,
-      },
-    });
+    if (node.node.slug) {
+
+      const path = `/developer/${pathName}/${node.node.slug.current}`;
+      createPage({
+        path,
+        component: require.resolve("./src/templates/resource/resource.tsx"),
+        context: {
+          id: node.node.slug.current,
+        },
+      });
+    }
+
   });
 };
 // You can delete this file if you're not using it
