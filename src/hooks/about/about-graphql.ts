@@ -10,7 +10,7 @@ export const GetAbout = () => {
           description
           mainImage {
             asset {
-              fluid(maxWidth: 1200) {
+              fluid(maxWidth: 800) {
                 ...GatsbySanityImageFluid
               }
             }

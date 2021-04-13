@@ -32,7 +32,7 @@ const Header = () => {
           to="/#projects"
           onClick={() => setExpanded(false)}
         >
-          Projects
+          Library
         </Link>
       </div>
     </header>

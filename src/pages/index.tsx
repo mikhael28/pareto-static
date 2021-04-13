@@ -2,12 +2,12 @@ import React from "react";
 import Layout from "../components/layout/layout";
 import ProjectsSection from "../components/projects-section/projects-section";
 import SEO from "../components/seo";
-// import Hero from "../components/hero/hero";
+import Hero from "../components/hero/hero";
 
 const IndexPage = () => (
   <Layout>
-    <SEO title="Home" />
-    {/* <Hero /> */}
+    <SEO title="Pareto Learning" />
+    <Hero />
     <ProjectsSection />
   </Layout>
 );
